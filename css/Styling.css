@@ -1,0 +1,25 @@
+body 
+{
+	background-color: powderblue;
+}
+.verticalline
+{
+	position: relative;
+	border-left: 6px solid black;
+    height: 200px;
+    top: 26%;
+    left: 70%;
+
+}
+.leftdiv
+{
+	position: relative;
+    top: 20%;
+    left: 20%;
+}
+.rightdiv
+{
+	position: relative;
+    top: 20%;
+    right: 10%;
+}
