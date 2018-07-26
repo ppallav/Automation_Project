@@ -2,10 +2,9 @@
 chrome.devtools.panels.create("AOCA",
                               "icon.png",
                               "panel.html",
-                              function(panel) {  });
+                              function(panel) {  
 
-window.onload = function() {
-
- 	
-}
+                                
+                                
+                              });
                               
