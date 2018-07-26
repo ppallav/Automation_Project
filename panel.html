@@ -1,99 +1,71 @@
 <html>
-<head>
-<link rel="stylesheet" href="css/Styling.css">
-<script src="panel.js"></script>
-
-</head>
-<body>
-	<h3 align="center"> AOCA (<u>A</u>ny<u>O</u>ne <u>C</u>an <u>A</u>utomate)</h3>
-	
-	<hr size="1" color="black">
-
-	<div class="radiobutton" id="divpanel">
-	<table align="center">
-		<tr> 
-		   <td> <input type="radio" name="rd1" id="single" /> Single &nbsp; </td>
-		   <td> <input type="radio" name="rd1" id="multiple" /> Multiple </td>
-		</tr>
-	</table>	
-	</div>
-	
-	<hr size="1" color="black">
-
-	<div id="singledivtag" style="display:none">
+		<head>
+		<link rel="stylesheet" href="css/Styling.css">
+		<script src="panel.js"></script>
+		<script src="server.js"></script>
+		<script src="FileSaver.js"></script>
 		
-		<div class="leftdiv">
-	 		<table align="left">
-	  		 <tr> 
-				 <td align="right"> <input type="radio" name="selector" id="xpath" value="xpathRadio" />Xpath &nbsp; </td>
-				 <td id="xpathtextbox" style="display:none"> <input type="text" id="xpathtxtbox"/> </td>
-				 
-				 <td> <input type="radio" name="selector" id="idradio" value="idRadioValue" />ID &nbsp; </td>
-				 <td id="idtextbox" style="display:none"> <input type="text" id="idtxtbox"/> </td>
-				 
-				 <td> <input type="radio" name="selector" id="nameradio" value="nameRadioValue"/>Name &nbsp; </td>
-				 <td id="nametextbox" style="display:none"> <input type="text" id="nametxtbox"/> </td>
-		 	 
-	 		  </tr>
-             
-	 		  <tr>
-	 		  	 <td colspan="4" align="center"> Enter Page Element Name: <input type="text" value="Enter"/></td>
-	 		     
-	  		   </tr>
-
-	 		  <tr>
-			     <td colspan="4" align="center"> <input type="button" value="SAVE" id="savebutton"/> </td>
-			   </tr>
-			  </table>
-         </div>
-    </div>
-    
-
-    <div id="multipledivtag" style="display:none">
-
- 		<div class="leftdiv">
-	 		<table align="left">
-	  		 <tr> 
-				 <td align="center"> <input type="radio" name="selector"/>Xpath &nbsp; </td>
-				 <td id="multiplexpath" style="display:none"> <input type="text" value=""/> </td>
-				 <td> <input type="radio" name="selector"/>Recommend&nbsp; </td>
-				 <td id="multiplerecommend" style="display:none"> <input type="text" value=""/> </td>
-			 </tr>
-
-	 		  <tr>
-	 		  	  <td colspan="4" align="center"> Enter Page Element Name: <input type="text" value="Enter"/></td>
-	 		  </tr>
-
-	 		  <tr>
-			     <td colspan="4" align="center"> <input type="button" value="SAVE" /> </td>
-			   </tr>
-			  </table>
-         </div>
-
- 	</div>
-
-
-
-    <div id="commondivtag" style="display:none">
-         <div class="rightdiv">
-      		 <table align="right" >
-       			 <tr>
-         	 		<td colspan="2" align="center"><input type="radio" name="output"/>YML &nbsp;
-         		 </tr>
-          		 <tr>
-         	 		<td colspan="2" align="center"><input type="radio" name="output"/>JSON &nbsp; 
-         		 </tr>
-           		 <tr>
-         	 		<td> <input type="button" value="Export"  /> </td>
-		 	 		<td> <input type="button" value="Append"/> </td>
-         		 </tr>
-	  		 </table>
-         </div>
-     	
-	  	 <div class="verticalline"> </div>
-    </div>
-
- 		
 		
-</body>
-</html>
+		</head>
+		<body>
+			
+				<img src="icon.png" STYLE="position:absolute; TOP: 0%; LEFT: 38%;" width="50" height="40"/>
+			<h3 align="center"> AOCA (<u>A</u>ny<u>O</u>ne <u>C</u>an <u>A</u>utomate)</h3>
+			<div class="ContactUS">
+			<h4> Contact US: &nbsp;<a href="mailto:ppallav@vmware.com; kdonthy@vmware.com; mvaghela@vmware.com">CTE TEAM </a> </h4>
+			</div>
+			<hr size="1" color="black">
+		
+			
+					<div class="container" id="Formelement">
+				<table align="left">
+				
+				<form>
+				<tr> 
+				   <td> <input type="radio" name="selector" id="dataats"/>Data ats-id &nbsp; </td>
+				   <td> <input type="text" id="DataatsId"/> </td>
+				  
+				</tr>
+				<tr> 
+					<td> <input type="radio" name="selector" id="idradio" value="idRadioValue" />ID &nbsp; </td>
+					<td> <input type="text" id="idtxtbox"/> </td>
+				</tr>
+				<tr>	
+					<td> <input type="radio" name="selector" id="nameradio" value="nameRadioValue"/>Name &nbsp; </td>
+					<td> <input type="text" id="nametxtbox"/> </td>
+				</tr>
+				<tr>
+					<td> <input type="radio" name="selector" id="cssradio" value="cssRadioValue"/>CSS &nbsp; </td>
+					<td> <input type="text" id="csstxtbox"/> </td>
+				</tr>
+				<tr>
+					  <td> <input type="radio" name="selector" id="xpathradio" value="xpathRadio"/>Xpath &nbsp; </td>
+					<td> <input type="text" id="xpathtxtbox"/> </td>
+			   </tr>
+				</form>
+			
+			</table>
+		</div>	
+			
+			<div class="ymlSelector">
+			
+				<table>
+					<tr>
+						
+						<td>
+							<input type="radio" name="YMLSelectore" checked> YML Selector </input>
+							<input type="radio" name="YMLSelectore"> XML Selector </input>
+							
+						
+								 <img src="Copy.png" id="CopyTextToSave"/>
+						</td>
+					 </tr>
+					 <tr>
+								 <td>
+								   <textarea id="inputTextToSave" cols="40" rows="6"></textarea>  </td>
+					</tr>
+				</table>
+			</div>
+					
+		</body>
+		</html>
