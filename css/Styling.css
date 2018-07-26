@@ -1,6 +1,6 @@
 body 
 {
-	background-color: powderblue;
+	background-color: #92cef3;
 }
 .verticalline
 {
@@ -11,15 +11,43 @@ body
     left: 70%;
 
 }
-.leftdiv
-{
-	position: relative;
-    top: 20%;
-    left: 20%;
+
+.button {
+    background-color: #008CBA;
+    border: none;
+    color: white;
+    padding: 8px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin: 4px 2px;
+    cursor: pointer;
+    moz-border-radius: 4px;
+    webkit-border-radius: 4px;
+    border-radius: 4px;
 }
-.rightdiv
-{
-	position: relative;
-    top: 20%;
-    right: 10%;
+
+.ContactUS {
+    position: absolute;
+    top: 0%;
+    right: 1%;
+}
+
+.ymlSelector{
+    position: relative;
+    left: 15%;
+}
+
+
+
+#CopyTextToSave{
+    height: 25px;
+    width: 30px;
+    
+}
+
+#Formelement{
+    position: relative;
+    top: 2%;
 }
