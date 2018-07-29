@@ -76,7 +76,7 @@ document.getElementById("dataats").onclick = function() {
 
     	if(xpathRadioValue.value="xpathRadio")
     	{
-    		var xpathpre = "function getElementXPath($0) { if (!$0) return null;	if ($0.id) { return `//*[@id=${$0.id}]`			} else if ($0.tagName === 'BODY') { return '/html/body'	} else {  const sameTagSiblings = Array.from($0.parentNode.childNodes) .filter(e => e.nodeName === $0.nodeName); const idx = sameTagSiblings.indexOf($0);  return getElementXPath($0.parentNode) + '/' + $0.tagName.toLowerCase() + (sameTagSiblings.length > 1 ? `[${idx + 1}]` : '') } }; getElementXPath($0)";
+    		var xpathpre = "function getElementXPath($0) { if (!$0) return null;	if ($0.id) { return `//*[@id='${$0.id}']`			} else if ($0.tagName === 'BODY') { return '/html/body'	} else {  const sameTagSiblings = Array.from($0.parentNode.childNodes) .filter(e => e.nodeName === $0.nodeName); const idx = sameTagSiblings.indexOf($0);  return getElementXPath($0.parentNode) + '/' + $0.tagName.toLowerCase() + (sameTagSiblings.length > 1 ? `[${idx + 1}]` : '') } }; getElementXPath($0)";
 			chrome.devtools.inspectedWindow.eval(xpathpre, 
 			function(element) 
 			  { 
@@ -84,6 +84,7 @@ document.getElementById("dataats").onclick = function() {
 				
 				chrome.devtools.inspectedWindow.eval('$0.tagName', function(TagName) 
 				{ 
+					var xpathtextboxvalueforyml=document.getElementById("xpathtxtbox").value;
 					
 					//To Find text for selected element base on PLACEHOLDER
 					chrome.devtools.inspectedWindow.eval('$0.innerText', 
@@ -91,8 +92,9 @@ document.getElementById("dataats").onclick = function() {
 						  {
 							 
 							if(innerTextValue.length > 0){
-		document.getElementById("pageElementName").value = "get_"+TagName.toLowerCase()+"_"+innerTextValue.split(' ').join('_'); 
-							}
+									var innertextvalueyml = "get_"+TagName.toLowerCase()+"_"+innerTextValue.split(' ').join('_')+":\n"+"   :selector:\n"+"    :xpath:\""+xpathtextboxvalueforyml+"\"";
+								document.getElementById("inputTextToSave").value = innertextvalueyml; 
+						}
 						   else{
 					
 				//To Find text for selected element base on INNERTEXT
@@ -101,18 +103,23 @@ document.getElementById("dataats").onclick = function() {
 					  { 
 						  
 							if(innerValue.length > 0){
-		document.getElementById("pageElementName").value = "get_"+TagName.toLowerCase()+"_"+innerValue.split(' ').join('_'); 
-							} else {
+								var innervalueyml = "get_"+TagName.toLowerCase()+"_"+innerValue.split(' ').join('_')+":\n"+"   :selector:\n"+"    :xpath:\""+xpathtextboxvalueforyml+"\"";
+								document.getElementById("inputTextToSave").value = innervalueyml; 
+										}
+										 else {
 								
 				//To Find text for selected element base on VALUE				
 					chrome.devtools.inspectedWindow.eval('$0.placeholder', 
 					function(placeholderValue){ 
 
 							 if(placeholderValue.length>0){
-		document.getElementById("pageElementName").value = "get_"+TagName.toLowerCase()+"_"+placeholderValue.split(' ').join('_'); 
-							 }
+								var placeholdervalueyml = "get_"+TagName.toLowerCase()+"_"+placeholderValue.split(' ').join('_')+":\n"+"   :selector:\n"+"    :xpath:\""+xpathtextboxvalueforyml+"\"";
+								document.getElementById("inputTextToSave").value = placeholdervalueyml; 
+								
+							}
 							 else{
-		document.getElementById("pageElementName").value = "get_"+TagName.toLowerCase();				 
+								var tagnamevalueyml = "get_"+TagName.toLowerCase()+":\n"+"   :selector:\n"+"    :xpath:\""+xpathtextboxvalueforyml+"\"";
+								document.getElementById("inputTextToSave").value = tagnamevalueyml; 		 
 							 }
 
 								  });
@@ -298,7 +305,7 @@ document.getElementById("dataats").onclick = function() {
 															 
 															if(placeholderValue.length > 0){
 																var nametextboxvalueforyml=document.getElementById("nametxtbox").value;
-																var placeholderyml = "get_"+TagName.toLowerCase()+"_"+placeholderValue.split(' ').join('_')+":\n"+"   :selector:\n"+"    :name:\""+nametextboxvalueforyml+"\""+"\n"+"   :type:";
+																var placeholderyml = "get_"+TagName.toLowerCase()+"_"+placeholderValue.split(' ').join('_')+":\n"+"   :selector:\n"+"    :name:\""+nametextboxvalueforyml+"\"";
 																
 																document.getElementById("inputTextToSave").value = placeholderyml; 
 															}
@@ -310,7 +317,7 @@ document.getElementById("dataats").onclick = function() {
 													  { 
 														
 															if(innerTextValue.length > 0){
-																var innerTextValueyml = "get_"+TagName.toLowerCase()+"_"+innerTextValue.split(' ').join('_')+":\n"+"   :selector:\n"+"    :name:\""+nametextboxvalueforyml+"\""+"\n"+"   :type:";
+																var innerTextValueyml = "get_"+TagName.toLowerCase()+"_"+innerTextValue.split(' ').join('_')+":\n"+"   :selector:\n"+"    :name:\""+nametextboxvalueforyml+"\"";
 																document.getElementById("inputTextToSave").value = innerTextValueyml; 
 													        } else {
 																
@@ -319,12 +326,12 @@ document.getElementById("dataats").onclick = function() {
 													function(innerValue){ 
 
 														 if(innerValue.length>0){
-															var innerValueyml = "get_"+TagName.toLowerCase()+"_"+innerValue.split(' ').join('_')+":\n"+"   :selector:\n"+"    :name:\""+nametextboxvalueforyml+"\""+"\n"+"   :type:";
+															var innerValueyml = "get_"+TagName.toLowerCase()+"_"+innerValue.split(' ').join('_')+":\n"+"   :selector:\n"+"    :name:\""+nametextboxvalueforyml+"\"";
 															document.getElementById("inputTextToSave").value = innerValueyml;
 										
 															 }
 															 else{
-															var tagnameyml = "get_"+TagName.toLowerCase()+":\n"+"   :selector:\n"+"    :name:\""+nametextboxvalueforyml+"\""+"\n"+"   :type:";
+															var tagnameyml = "get_"+TagName.toLowerCase()+":\n"+"   :selector:\n"+"    :name:\""+nametextboxvalueforyml+"\"";
 															document.getElementById("inputTextToSave").value = tagnameyml;				 
 															 }
 
@@ -402,12 +409,13 @@ document.getElementById("cssradio").onclick = function() {
 										chrome.devtools.inspectedWindow.eval('$0.placeholder', 
 										function(placeholderValue) 
 											  {
-											  
-												if(placeholderValue.length > 0){
-													var csstextboxvalueforyml=document.getElementById("csstxtbox").value;
-													var placeholderValueyml = "get_"+TagName.toLowerCase()+"_"+placeholderValue.split(' ').join('_')+":\n"+"   :selector:\n"+"    :css:\""+csstextboxvalueforyml+"\""+"\n"+"   :type:";
+												var csstextboxvalueforyml=document.getElementById("csstxtbox").value;
+												
+												if(placeholderValue.length > 0)
+												{
 													
-													document.getElementById("inputTextToSave").value = placeholderValueyml; 
+													var placeholderValueyml = "get_"+TagName.toLowerCase()+"_"+placeholderValue.split(' ').join('_')+":\n"+"   :selector:\n"+"    :css:\""+csstextboxvalueforyml+"\""+"\n"+"   :type:";
+												    document.getElementById("inputTextToSave").value = placeholderValueyml; 
 												}
 											   else{
 										
@@ -419,7 +427,6 @@ document.getElementById("cssradio").onclick = function() {
 												if(innerTextValue.length > 0){
 
 													var innerTextValueyml = "get_"+TagName.toLowerCase()+"_"+innerTextValue.split(' ').join('_')+":\n"+"   :selector:\n"+"    :css:\""+csstextboxvalueforyml+"\""+"\n"+"   :type:";
-													
 													document.getElementById("inputTextToSave").value = innerTextValueyml; 
 												} else {
 													
@@ -476,9 +483,9 @@ document.getElementById("cssradio").onclick = function() {
 											  {											  
 
 												if(placeholderValue.length > 0){
-													var csstextboxvalueforyml=document.getElementById("csstxtbox").value;
-													var placeholderValueyml = "get_"+TagName.toLowerCase()+"_"+placeholderValue.split(' ').join('_')+":\n"+"   :selector:\n"+"    :css:\""+csstextboxvalueforyml+"\""+"\n"+"   :type:";
+													var csstextboxvalueforyml1=document.getElementById("csstxtbox").value;
 													
+													var placeholderValueyml = "get_"+TagName.toLowerCase()+"_"+placeholderValue.split(' ').join('_')+":\n"+"   :selector:\n"+"    :css:\""+csstextboxvalueforyml1+"\""+"\n"+"   :type:";
 													document.getElementById("inputTextToSave").value = placeholderValueyml; 
 												}
 											   else{
@@ -489,9 +496,8 @@ document.getElementById("cssradio").onclick = function() {
 										  { 
 										
 												if(innerTextValue.length > 0){
-													var innerTextValueyml = "get_"+TagName.toLowerCase()+"_"+innerTextValue.split(' ').join('_')+":\n"+"   :selector:\n"+"    :css:\""+csstextboxvalueforyml+"\""+"\n"+"   :type:";
-													
-													document.getElementById("inputTextToSave").value = placeholderValueyml; 
+													var innerTextValueyml = "get_"+TagName.toLowerCase()+"_"+innerTextValue.split(' ').join('_')+":\n"+"   :selector:\n"+"    :css:\""+csstextboxvalueforyml1+"\""+"\n"+"   :type:";
+													document.getElementById("inputTextToSave").value = innerTextValueyml; 
 												} else {
 													
 					//To Find text for selected element base on VALUE				
@@ -499,17 +505,15 @@ document.getElementById("cssradio").onclick = function() {
 										function(innerValue){ 
 											
 											 if(innerValue.length>0){
-												var innerValueyml = "get_"+TagName.toLowerCase()+"_"+innerValue.split(' ').join('_')+":\n"+"   :selector:\n"+"    :css:\""+csstextboxvalueforyml+"\""+"\n"+"   :type:";
-												
+												var innerValueyml = "get_"+TagName.toLowerCase()+"_"+innerValue.split(' ').join('_')+":\n"+"   :selector:\n"+"    :css:\""+csstextboxvalueforyml1+"\""+"\n"+"   :type:";
 												document.getElementById("inputTextToSave").value = innerValueyml; 
 												 }
 												 else{
-													var innerTagyml = "get_"+TagName.toLowerCase()+"_"+innerValue.split(' ').join('_')+":\n"+"   :selector:\n"+"    :css:\""+csstextboxvalueforyml+"\""+"\n"+"   :type:";
-													
-													document.getElementById("inputTextToSave").value = innerTagyml;				 
+													var innerTagyml = "get_"+TagName.toLowerCase()+"_"+innerValue.split(' ').join('_')+":\n"+"   :selector:\n"+"    :css:\""+csstextboxvalueforyml1+"\""+"\n"+"   :type:";
+												    document.getElementById("inputTextToSave").value = innerTagyml;				 
 												 }
 
-													  });
+												  });
 												}
 										 
 										  });
@@ -517,8 +521,8 @@ document.getElementById("cssradio").onclick = function() {
 											
 											});
 														
-																	}
-																	else{
+											}
+													else{
 																		
 																				document.getElementById("csstxtbox").disabled = true;
 																				document.getElementById("csstxtbox").value = "CSS ID & Class is Duplicate";
@@ -543,8 +547,7 @@ document.getElementById("cssradio").onclick = function() {
 														var finalclass= resultClass.split(' ').join('.');
 														
 														cssclass_occurance = "$$(\"."+finalclass+"\")";
-														
-
+												
 														 //Occurance Check for CSS Class
 														 chrome.devtools.inspectedWindow.eval(cssclass_occurance, 
 															function(occurance_cssClass) 
@@ -554,17 +557,18 @@ document.getElementById("cssradio").onclick = function() {
 																	{
 																	   document.getElementById("csstxtbox").style.color = 'black';
 																	   document.getElementById("csstxtbox").value ="."+ finalclass+"";
-																
-																
+																	   var csstextboxvalueforyml2=document.getElementById("csstxtbox").value;
+																	   var innertagnameyml = "get_"+TagName.toLowerCase()+":\n"+"   :selector:\n"+"    :css:\""+csstextboxvalueforyml2+"\""+"\n"+"   :type:";
+																	   document.getElementById("inputTextToSave").value = innertagnameyml; 
+																   
 										//To Find text for selected element base on PLACEHOLDER
 										chrome.devtools.inspectedWindow.eval('$0.placeholder', 
 										function(placeholderValue) 
 											  {
-											  
-
-												if(placeholderValue.length > 0){
-							document.getElementById("pageElementName").value = "get_"+TagName.toLowerCase()+"_"+placeholderValue.split(' ').join('_'); 
-												}
+											  	if(placeholderValue.length > 0){
+													var placeholderValueyml = "get_"+TagName.toLowerCase()+"_"+placeholderValue.split(' ').join('_')+":\n"+"   :selector:\n"+"    :css:\""+csstextboxvalueforyml2+"\""+"\n"+"   :type:";
+													document.getElementById("inputTextToSave").value = placeholderValueyml; 
+																	}
 											   else{
 										
 					//To Find text for selected element base on INNERTEXT
@@ -573,18 +577,21 @@ document.getElementById("cssradio").onclick = function() {
 										  { 
 										
 												if(innerTextValue.length > 0){
-							document.getElementById("pageElementName").value = "get_"+TagName.toLowerCase()+"_"+innerTextValue.split(' ').join('_'); 
-												} else {
+													var innerTextValueyml = "get_"+TagName.toLowerCase()+"_"+innerTextValue.split(' ').join('_')+":\n"+"   :selector:\n"+"    :css:\""+csstextboxvalueforyml2+"\""+"\n"+"   :type:";
+													document.getElementById("inputTextToSave").value = innerTextValueyml; 
+																	} else {
 													
 					//To Find text for selected element base on VALUE				
 							chrome.devtools.inspectedWindow.eval('$0.value', 
 										function(innerValue){ 
 											
 											 if(innerValue.length>0){
-							document.getElementById("pageElementName").value = "get_"+TagName.toLowerCase()+"_"+innerValue.split(' ').join('_'); 
-												 }
+												var innerValueyml = "get_"+TagName.toLowerCase()+"_"+innerValue.split(' ').join('_')+":\n"+"   :selector:\n"+"    :css:\""+csstextboxvalueforyml2+"\""+"\n"+"   :type:";
+												document.getElementById("inputTextToSave").value = innerValueyml; 
+																	 }
 												 else{
-							document.getElementById("pageElementName").value = "get_"+TagName.toLowerCase();				 
+													var innertagnameyml = "get_"+TagName.toLowerCase()+":\n"+"   :selector:\n"+"    :css:\""+csstextboxvalueforyml2+"\""+"\n"+"   :type:";
+													document.getElementById("inputTextToSave").value = innertagnameyml; 
 												 }
 
 													  });
