@@ -4,15 +4,19 @@
 		<script src="panel.js"></script>
 		<script src="server.js"></script>
 		<script src="FileSaver.js"></script>
-		
-		
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script>
+				$(document).ready(function(){
+					alert("testing");
+				});
+		</script>
 		</head>
 		<body>
 			
 				<img src="icon.png" STYLE="position:absolute; TOP: 0%; LEFT: 38%;" width="50" height="40"/>
 			<h3 align="center"> AOCA (<u>A</u>ny<u>O</u>ne <u>C</u>an <u>A</u>utomate)</h3>
 			<div class="ContactUS">
-			<h4> Contact US: &nbsp;<a href="mailto:ppallav@vmware.com; kdonthy@vmware.com; mvaghela@vmware.com">CTE TEAM </a> </h4>
+			<h4> Contact US: &nbsp;<a href="mailto:cte-aw@vmware.com">CTE TEAM </a> </h4>
 			</div>
 			<hr size="1" color="black">
 		
@@ -22,25 +26,25 @@
 				
 				<form>
 				<tr> 
-				   <td> <input type="radio" name="selector" id="dataats"/>Data ats-id &nbsp; </td>
-				   <td> <input type="text" id="DataatsId"/> </td>
+				   <td> <input type="radio" name="selector" id="dataats"/><label>Data ats-id &nbsp; </label></td>
+				   <td> <input type="text" id="DataatsId" disabled/> </td>
 				  
 				</tr>
 				<tr> 
-					<td> <input type="radio" name="selector" id="idradio" value="idRadioValue" />ID &nbsp; </td>
-					<td> <input type="text" id="idtxtbox"/> </td>
+					<td> <input type="radio" name="selector" id="idradio" value="idRadioValue" /><label>ID &nbsp;</label> </td>
+					<td> <input type="text" id="idtxtbox" disabled/> </td>
 				</tr>
 				<tr>	
-					<td> <input type="radio" name="selector" id="nameradio" value="nameRadioValue"/>Name &nbsp; </td>
-					<td> <input type="text" id="nametxtbox"/> </td>
+					<td> <input type="radio" name="selector" id="nameradio" value="nameRadioValue"/><label>Name &nbsp; </label></td>
+					<td> <input type="text" id="nametxtbox" disabled/> </td>
 				</tr>
 				<tr>
-					<td> <input type="radio" name="selector" id="cssradio" value="cssRadioValue"/>CSS &nbsp; </td>
-					<td> <input type="text" id="csstxtbox"/> </td>
+					<td> <input type="radio" name="selector" id="cssradio" value="cssRadioValue"/><label>CSS &nbsp; </label></td>
+					<td> <input type="text" id="csstxtbox" disabled/> </td>
 				</tr>
 				<tr>
-					  <td> <input type="radio" name="selector" id="xpathradio" value="xpathRadio"/>Xpath &nbsp; </td>
-					<td> <input type="text" id="xpathtxtbox"/> </td>
+					  <td> <input type="radio" name="selector" id="xpathradio" value="xpathRadio"/><label>Xpath &nbsp; </label></td>
+					<td> <input type="text" id="xpathtxtbox" disabled/> </td>
 			   </tr>
 				</form>
 			
@@ -53,16 +57,18 @@
 					<tr>
 						
 						<td>
-							<input type="radio" name="YMLSelectore" checked> YML Selector </input>
-							<input type="radio" name="YMLSelectore"> XML Selector </input>
-							
-						
-								 <img src="Copy.png" id="CopyTextToSave"/>
+							<input type="radio" name="YMLSelectore" id="ymlselector" checked><label> YML </label></input>
+							<input type="radio" name="YMLSelectore" id="cssselector"><label> CS File </label></input>
+						</td>
+						<td>	<div class="tooltip">
+								 <img src="Copy.png" id="CopyTextToSave"/> &nbsp;
+								 <span class="tooltiptext">Click to Copy</span> </div>
+								
 						</td>
 					 </tr>
 					 <tr>
-								 <td>
-								   <textarea id="inputTextToSave" cols="40" rows="6"></textarea>  </td>
+								 <td colspan="2">
+								   <textarea id="inputTextToSave" cols="45" rows="6"></textarea>  </td>
 					</tr>
 				</table>
 			</div>
