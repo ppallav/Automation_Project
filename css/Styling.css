@@ -1,6 +1,6 @@
 body 
 {
-	background-color: #92cef3;
+	background-color: rgb(223, 221, 221);
 }
 .verticalline
 {
@@ -50,4 +50,35 @@ body
 #Formelement{
     position: relative;
     top: 2%;
+}
+
+label{
+    font-weight: bold;
+    font-family: calibri;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    color: rgb(10, 10, 10);
+    text-align: center;
+    
+    padding: 2px;
+    font-size: 14px;
+    font-family: Calibri Light;
+
+    position: fixed;
+    display: block;
+    overflow: hidden;
+
+    
+    
+    opacity: 0;
+    transition: opacity 1s;
+
+   
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
 }
